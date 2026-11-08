@@ -1,0 +1,349 @@
+NCDOT ENCROACHMENT AGREEMENTS FOR UTILITIES - FORMS 16.x
+Source page: https://connect.ncdot.gov/municipalities/Utilities/Pages/Encroachment-Agreements.aspx
+Collected: October 31, 2026
+
+==================================================================
+16.1 - TWO-PARTY, UTILITY, PRIMARY AND SECONDARY HIGHWAYS (NON-C/A)
+==================================================================
+Title: 16.1 - Two-Party, Utility, Primary and Secondary Highways (Non-C/A)
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-1-Two-Party-Utility-Primary-and-Secondary-Highways-Non-C-A.pdf
+
+Used for the installation of various utility lines within non-control of access rights-of-way. Applicable items include:
+- Water
+- Sewer
+- Power
+- Telephone
+- Gas
+
+For this form to be used, the applicant (the second party on the encroachment agreement) must install AND maintain the utility.
+
+Examples:
+- A communications company installing fiber optic cable.
+- A municipality installing gravity sewer.
+
+Item Order: 4
+Content Type: Item
+Created at 7/8/2013 9:29 AM by System Account
+Last modified at 3/5/2021 1:57 PM by System Account
+
+
+==================================================================
+16.1A - TWO-PARTY, NON-UTILITY, NOT RELATED TO ROAD CONSTRUCTION
+==================================================================
+Title: 16.1A - Two-Party, Non-Utility, Not Related to Road Construction
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-1A-Two-Party-Non-Utility-Not-Related-to-Road-Construction.pdf
+
+Used for the installation of items that are not utilities and are not related to road construction. Applicable items include, but are not limited to:
+- Signs
+- Monitoring wells
+- Irrigation systems
+- Fence (This does not apply to the replacement of controlled access fence. For replacement of controlled access fence, a Form 16.2 should be used.)
+- Sidewalk (Applicable when only sidewalk is being constructed and is not in conjunction with additional road construction. If sidewalk is being constructed in conjunction with additional road construction, it should be included on the Form 16.1B.)
+
+For this form to be used, the applicant (the second party on the encroachment agreement) must install AND maintain the item(s) installed.
+
+Examples:
+- A development installing sidewalk per a municipal requirement.
+- A contaminated site installing monitoring wells due to environmental requirements.
+
+Item Order: 5
+Content Type: Item
+Created at 7/8/2013 9:31 AM by System Account
+Last modified at 3/5/2021 1:14 PM by System Account
+
+
+==================================================================
+16.1B - TWO-PARTY, RELATED TO ROAD CONSTRUCTION
+==================================================================
+Title: 16.1B - Two-Party, Related to Road Construction
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-1B-Two-Party-Related-to-Road-Construction.pdf
+
+Used for items that are related to road construction. Applicable items include, but are not limited to:
+- Pavement widening
+- Curb and gutter
+- Storm drainage
+- Pavement markings
+- Ditches and shoulders
+- Sidewalk (Applicable when sidewalk is being constructed in conjunction with additional road construction. If only sidewalk is being constructed, a Form 16.1A should be used.)
+
+Items under this agreement will be installed by the applicant (the second party on the encroachment agreement) and ultimately owned and maintained by NCDOT. Note: Sidewalk will not be maintained by NCDOT but is still covered under this agreement when in conjunction with other road construction.
+
+Examples:
+- A development constructing a left-turn lane.
+- A municipality upgrading a storm drainage system.
+
+Item Order: 6
+Content Type: Item
+Created at 7/8/2013 9:31 AM by System Account
+Last modified at 3/5/2021 1:16 PM by System Account
+
+
+==================================================================
+16.1C - TWO-PARTY, PIPING OF TREATED EFFLUENT
+==================================================================
+Title: 16.1C - Two-Party, Piping of Treated Effluent
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-1C-Two-Party-Piping of-Treated-Effluent.pdf
+
+Used for the installation of pipe in order for treated effluent to flow from a contaminated soil site to a discharge point approved by the North Carolina Department of Environment and Natural Resources (NCDENR). To be considered for approval, the applicant must have and adhere to a remediation plan approved by NCDENR as well as by NCDOT. The installation must also adhere to the Memorandum of Agreement (MOA) between NCDOT and NCDENR dated January 25, 1999.
+
+The applicant (the second party on the encroachment agreement) shall install AND maintain the installation. Upon completion of the site remediation, the second party is responsible for the removal or abandonment of the installation as required by NCDOT and NCDENR. Installations are limited to primary and secondary roadways and are not allowed within control of access right of ways.
+
+Example:
+- A service station is required to treat and remediate soils contaminated by leaking fuel tanks and piping of the effluent from the remediation site to an approved discharge point is required.
+
+Item Order: 7
+Content Type: Item
+Created at 7/8/2013 9:31 AM by System Account
+Last modified at 3/5/2021 1:18 PM by System Account
+
+
+==================================================================
+16.2 - TWO-PARTY, (CONTROLLED ACCESS RIGHT OF WAY)
+==================================================================
+Title: 16.2 - Two-Party, (Controlled Access Right of Way)
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-2-Two-Party-C-A.pdf
+
+Used for the installation of various utility lines within control of access rights-of-way. Applicable items include (but not limited to):
+- Water
+- Sewer
+- Power
+- Telephone
+- Gas
+- Controlled access fencing or other non-utility installations in C/A right of way
+
+For this form to be used, the applicant (the second party on the encroachment agreement) must install AND maintain the utility.
+
+On full control of access highways, such as interstates, installations are generally limited to perpendicular crossings.
+
+Example:
+- A gas company installing a gas line across an interstate highway.
+
+Item Order: 8
+Content Type: Item
+Created at 7/8/2013 9:32 AM by System Account
+Last modified at 5/5/2021 7:15 AM by Larry D. Sanders
+
+
+==================================================================
+16.3 - BLANKET, PLOWED-IN TELECOMMUNICATIONS CABLE
+==================================================================
+Title: 16.3 - Blanket, Plowed-In Telecommunications Cable
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-3-Blanket-Plowed-In-Telecommunications-Cable.pdf
+
+This agreement is only applicable to plowed-in telecommunication installations. A company's original blanket encroachment agreement must be approved by the State Utility Agent. Subsequently, only "routine," telecommunication installations are permitted under this blanket agreement.
+
+The following work can NOT be covered under this agreement:
+- Boring greater than 6" in diameter
+- Directional boring of ANY size
+- Construction within full control of access right-of-way
+
+Approval of blanket agreements is not recommended within the construction limits of active Transportation Improvement Projects (TIPs).
+
+With this agreement, the applicant (the second party on the encroachment agreement) will install AND maintain the utility.
+
+Example:
+- This agreement is best suited for major telecommunications companies who are constantly conducting "routine" installations.
+
+Item Order: 9
+Content Type: Item
+Created at 7/8/2013 9:33 AM by System Account
+Last modified at 3/5/2021 1:21 PM by System Account
+
+
+==================================================================
+16.3A - BLANKET, TRENCHED-IN TELECOMMUNICATIONS CABLE
+==================================================================
+Title: 16.3A - Blanket, Trenched-In Telecommunications Cable
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-3A-Blanket-Trenched-In-Telecommunications-Cable.pdf
+
+This agreement is only applicable to trenched-in telecommunication installations. A company's original blanket encroachment agreement must be approved by the State Utility Agent. Subsequently, only "routine," telecommunication installations are permitted under this blanket agreement.
+
+The following work can NOT be covered under this agreement:
+- Boring greater than 6" in diameter
+- Directional boring of ANY size
+- Construction within full control of access right-of-way
+
+Approval of blanket agreements is not recommended within the construction limits of active Transportation Improvement Projects (TIPs).
+
+With this agreement, the applicant (the second party on the encroachment agreement) will install AND maintain the utility.
+
+Example:
+- This agreement is best suited for major telecommunications companies who are constantly conducting "routine" installations.
+
+Item Order: 10
+Content Type: Item
+Created at 7/8/2013 9:34 AM by System Account
+Last modified at 3/5/2021 1:20 PM by System Account
+
+
+==================================================================
+16.4 - BLANKET, CABLEVISION
+==================================================================
+Title: 16.4 - Blanket, Cablevision
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-4-Blanket-Cablevision.pdf
+
+This agreement is only applicable to CATV installations. A company's original blanket encroachment agreement must be approved by the State Utility Agent. Subsequently, only "routine" CATV installations are permitted under this blanket agreement.
+
+The following work can NOT be covered under this agreement:
+- Boring greater than 6" in diameter
+- Directional boring of ANY size
+- Construction within full control of access right-of-way
+- Setting of poles within NCDOT right-of-way (Aerial installations are limited to attachments to existing poles)
+
+Approval on blanket agreements is not recommended within the construction limits of active Transportation Improvement Projects (TIPs).
+
+With this agreement, the applicant (the second party on the encroachment agreement) will install AND maintain the utility.
+
+Example:
+- This agreement is best suited for major CATV companies who are constantly conducting "routine" installations.
+
+Item Order: 11
+Content Type: Item
+Created at 7/8/2013 9:36 AM by System Account
+Last modified at 3/5/2021 1:25 PM by System Account
+
+
+==================================================================
+16.5 - BLANKET, UNDERGROUND UTILITY SERVICE CONNECTION
+==================================================================
+Title: 16.5 - Blanket, Underground Utility Service Connection
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-5-Blanket-Underground-Utility-Service-Connection.pdf
+
+This agreement is only applicable to utility service connections. A company's original blanket encroachment agreement must be approved by the State Utility Agent. Subsequently, only "routine" service connections are permitted under this blanket agreement.
+
+The following work can NOT be covered under this agreement:
+- Boring greater than 6" in diameter
+- Directional boring of ANY size
+- Construction within full control of access right-of-way
+- Installations beyond a simple service connection
+
+Approval of blanket agreements is not recommended within the construction limits of active Transportation Improvement Projects (TIPs).
+
+Minor longitudinal installations associated with the service connection are permitted under this agreement. Included longitudinal installations must be plowed-in and shall not exceed 500 linear feet in length.
+
+With this agreement, the applicant (the second party on the encroachment agreement) will install AND maintain the utility. District Office approval and/or notification is NOT required under this agreement.
+
+Example:
+- This agreement is best suited for major utility companies who are constantly conducting simple service taps within NCDOT rights-of-way.
+
+Item Order: 12
+Content Type: Item
+Created at 7/8/2013 9:36 AM by System Account
+Last modified at 3/5/2021 1:26 PM by System Account
+
+
+==================================================================
+16.5A - BLANKET, AERIAL UTILITY CROSSINGS & TAPS
+==================================================================
+Title: 16.5A - Blanket, Aerial Utility Crossings & Taps
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-5A-Blanket-Aerial-Utility-Crossings-and-Taps.pdf
+
+This agreement is only applicable to aerial utility crossings & taps. A company's original blanket encroachment agreement must be approved by the State Utility Agent. Subsequently, only "routine" aerial utility crossings and taps are permitted under this blanket agreement.
+
+The following work can NOT be covered under this agreement:
+- Boring of ANY size
+- Construction within full control of access right-of-way
+- Setting of poles within NCDOT right-of-way (Aerial installations are limited to attachments to existing poles)
+
+Approval on Blanket Agreements is not recommended within the construction limits of Active Transportation Improvement Projects (TIPs).
+
+With this agreement, the applicant (the second party on the encroachment agreement) will install AND maintain the utility. District Office approval and/or notification is NOT required under this agreement.
+
+Example:
+- This agreement is best suited for major utility companies who are constantly conducting simple aerial crossings and taps within NCDOT rights-of-way.
+
+Item Order: 13
+Content Type: Item
+Created at 7/8/2013 9:37 AM by System Account
+Last modified at 3/5/2021 1:27 PM by System Account
+
+
+==================================================================
+16.6 - THREE-PARTY, (NON-C/A)
+==================================================================
+Title: 16.6 - Three-Party, (Non-C/A)
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-6-Three-Party-Non-C-A.pdf
+
+Used for the installation of utility lines (typically water and/or sewer) within non-control of access rights-of-way.
+
+This agreement is used when the applicant (the second party on the encroachment agreement) is installing the utility and will retain maintenance for some limited time before transferring long-term maintenance to the third party on the agreement. Each party must sign the agreement. A separate provision should be manually written and included to clarify what conditions and terms indicate the legal responsibility of the third party for when maintenance is transferred.
+
+This form should NOT be used when a contractor simply intends to perform construction with immediate ownership and maintenance by the long-term owner. In these cases, the correct form would be a 16.1 or 16.2, depending on the location relative to the control of access along the highway.
+
+Example:
+- A development required to install a water line that will ultimately be maintained by the local municipality.
+
+Item Order: 14
+Content Type: Item
+Created at 7/8/2013 9:37 AM by System Account
+Last modified at 5/5/2021 8:02 AM by Larry D. Sanders
+
+
+==================================================================
+16.6A - THREE-PARTY, (C/A)
+==================================================================
+Title: 16.6A - Three-Party, (C/A)
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-6A-Three-Party-C-A.pdf
+
+Used for the installation of utility lines (typically water and/or sewer) within control of access rights-of-way.
+
+On full control of access highways, such as interstates, installations are generally limited to perpendicular crossings.
+
+This agreement is used when the applicant (the second party on the encroachment agreement) is installing the utility and will retain maintenance for some limited time before transferring long-term maintenance to the third party on the agreement. Each party must sign the agreement. A separate provision should be manually written and included to clarify what conditions and terms indicate the legal responsibility of the third party for when maintenance is transferred.
+
+This form should NOT be used when a contractor simply intends to perform construction with immediate ownership and maintenance by the long-term owner. In these cases, the correct form would be a 16.1 or 16.2, depending on the location relative to the control of access along the highway.
+
+Example:
+- A development required to install a water line within control of access right-of-way that will ultimately be maintained by the local municipality.
+
+Item Order: 15
+Content Type: Item
+Created at 7/8/2013 9:38 AM by System Account
+Last modified at 1/14/2022 9:58 AM by Kim Buttry
+
+
+==================================================================
+16.7 - GRADING OR ALTERATION OF DRAINAGE (C/A)
+==================================================================
+Title: 16.7 - Grading or Alteration of Drainage (C/A)
+
+Description:
+https://connect.ncdot.gov/municipalities/Utilities/EncroachmentForms/16-7-Grading-or-Alteration-of-Drainage-C-A.pdf
+
+Used for grading and/or the alteration of drainage within controlled access rights-of-way. If the work is being done in conjunction with additional road construction, a separate agreement for grading and/or alteration of drainage may not be required. This should be discussed with the applicable District Office for clarification.
+
+Work covered under this agreement will be performed by the applicant (the second party on the encroachment agreement) and ultimately owned and maintained by NCDOT.
+
+A $1500, non-refundable processing fee is required with the submittal of this encroachment agreement. If the proposed grading removes dirt from the right-of-way, a per-cubic-yard fee is applied in addition to the processing fee. Contact the applicable District Office for details on these fees.
+
+Example:
+- A development lowering a berm in order to improve the constructability of the applicant's adjacent property.
+
+Item Order: 16
+Content Type: Item
+Created at 7/8/2013 9:38 AM by System Account
+Last modified at 10/27/2022 12:30 PM by System Account

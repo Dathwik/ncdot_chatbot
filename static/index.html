@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NCDOT Virtual Assistant</title>
+<style>
+  :root {
+    --navy: #00386b;
+    --blue: #004b87;
+    --blue-dark: #003763;
+    --gold: #ffc72c;
+    --gold-dark: #e6ae00;
+    --ink: #1b2733;
+    --muted: #5b6b7a;
+    --line: #d9e1e8;
+    --bg: #f4f7fa;
+    --white: #fff;
+    --radius: 14px;
+    --shadow: 0 12px 40px rgba(0, 35, 70, .28);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--ink); background: var(--bg);
+    font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  a { color: var(--blue); }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+  /* ---------- Demo host website (replace with your real site) ---------- */
+  .topbar { background: var(--navy); color: #cfe0f1; font-size: 13px; padding: 6px 20px; text-align: right; }
+  .site-header { background: var(--blue); color: #fff; border-bottom: 5px solid var(--gold); }
+  .site-header .wrap { max-width: 1100px; margin: 0 auto; padding: 16px 20px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 22px; letter-spacing: .2px; }
+  .brand svg { flex: none; }
+  .brand small { display: block; font-weight: 400; font-size: 12px; color: #cfe0f1; letter-spacing: .5px; text-transform: uppercase; }
+  nav { margin-left: auto; display: flex; gap: 6px; flex-wrap: wrap; }
+  nav a { color: #fff; text-decoration: none; padding: 8px 12px; border-radius: 6px; font-size: 15px; }
+  nav a:hover { background: rgba(255,255,255,.14); }
+  .hero { background: linear-gradient(135deg, var(--blue-dark), var(--blue)); color: #fff; padding: 56px 20px; }
+  .hero .wrap, main { max-width: 1100px; margin: 0 auto; }
+  .hero h1 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 40px); }
+  .hero p { margin: 0; max-width: 620px; color: #dbe8f5; font-size: 18px; }
+  main { padding: 36px 20px 120px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+  .card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--gold); border-radius: 10px; padding: 20px; }
+  .card h3 { margin: 0 0 6px; color: var(--blue); }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* ---------- Chat launcher ---------- */
+  #launcher {
+    position: fixed; right: 22px; bottom: 22px; z-index: 1000;
+    display: flex; align-items: center; gap: 10px;
+    background: var(--blue); color: #fff; border: 3px solid var(--gold);
+    border-radius: 999px; padding: 12px 20px 12px 16px; cursor: pointer;
+    font: 600 16px/1 inherit; box-shadow: var(--shadow);
+    transition: transform .15s ease, background .15s ease;
+  }
+  #launcher:hover { background: var(--blue-dark); transform: translateY(-2px); }
+  #launcher svg { width: 26px; height: 26px; }
+  #launcher .dot { position: absolute; top: -4px; right: -2px; width: 14px; height: 14px; background: var(--gold); border: 2px solid #fff; border-radius: 50%; }
+  #launcher.hidden { display: none; }
+  #nudge {
+    position: fixed; right: 26px; bottom: 90px; z-index: 999; max-width: 250px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 34px 12px 14px;
+    box-shadow: 0 6px 24px rgba(0,35,70,.18); font-size: 14px; display: none;
+  }
+  #nudge.show { display: block; animation: pop .3s ease; }
+  #nudge::after { content: ""; position: absolute; right: 30px; bottom: -8px; width: 14px; height: 14px; background: #fff; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: rotate(45deg); }
+  #nudge button { position: absolute; top: 4px; right: 6px; background: none; border: 0; font-size: 18px; color: var(--muted); cursor: pointer; }
+  #nudge a { font-weight: 600; cursor: pointer; }
+
+  /* ---------- Chat panel ---------- */
+  #panel {
+    position: fixed; right: 22px; bottom: 22px; z-index: 1001;
+    width: 390px; height: min(640px, calc(100vh - 44px));
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+    display: none; flex-direction: column; overflow: hidden; border: 1px solid var(--line);
+  }
+  #panel.open { display: flex; animation: pop .22s ease; }
+  @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+
+  .chat-head { background: var(--blue); color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 12px; border-bottom: 4px solid var(--gold); }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gold); color: var(--navy); display: grid; place-items: center; flex: none; }
+  .avatar svg { width: 22px; height: 22px; }
+  .chat-head h2 { margin: 0; font-size: 17px; line-height: 1.2; }
+  .chat-head p { margin: 2px 0 0; font-size: 12.5px; color: #cfe0f1; }
+  .chat-head p::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #5fd48a; border-radius: 50%; margin-right: 6px; }
+  .head-actions { margin-left: auto; display: flex; gap: 4px; }
+  .icon-btn { background: transparent; border: 0; color: #fff; width: 34px; height: 34px; border-radius: 8px; cursor: pointer; display: grid; place-items: center; }
+  .icon-btn:hover { background: rgba(255,255,255,.18); }
+  .icon-btn svg { width: 18px; height: 18px; }
+
+  #log { flex: 1; overflow-y: auto; padding: 16px; background: var(--bg); scroll-behavior: smooth; }
+  .row { display: flex; margin: 10px 0; }
+  .row.user { justify-content: flex-end; }
+  .msg { max-width: 86%; padding: 10px 14px; border-radius: 14px; font-size: 15px; word-wrap: break-word; overflow-wrap: anywhere; }
+  .bot .msg { background: #fff; border: 1px solid var(--line); border-top-left-radius: 4px; }
+  .user .msg { background: var(--blue); color: #fff; border-top-right-radius: 4px; white-space: pre-wrap; }
+  .msg p { margin: 0 0 8px; } .msg p:last-child { margin-bottom: 0; }
+  .msg ul, .msg ol { margin: 4px 0 8px; padding-left: 20px; }
+  .msg a { color: var(--blue); font-weight: 600; }
+  .sources { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 12.5px; color: var(--muted); }
+  .sources summary { cursor: pointer; font-weight: 600; color: var(--blue); }
+  .sources ul { margin: 6px 0 0; padding-left: 18px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
+  .chip { background: #fff; border: 1.5px solid var(--blue); color: var(--blue); border-radius: 999px; padding: 7px 13px; cursor: pointer; font: 600 13.5px/1.2 inherit; text-align: left; }
+  .chip:hover { background: var(--blue); color: #fff; }
+
+  .typing { display: inline-flex; gap: 4px; padding: 4px 2px; }
+  .typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: blink 1.2s infinite; }
+  .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+
+  form { display: flex; gap: 8px; padding: 12px; background: #fff; border-top: 1px solid var(--line); }
+  #input { flex: 1; padding: 11px 14px; border: 1.5px solid #b8c4cf; border-radius: 999px; font: 15px inherit; min-width: 0; }
+  #input:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(0,75,135,.18); }
+  #send { background: var(--gold); color: var(--navy); border: 0; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: grid; place-items: center; flex: none; }
+  #send:hover:not(:disabled) { background: var(--gold-dark); }
+  #send:disabled { opacity: .5; cursor: not-allowed; }
+  #send svg { width: 20px; height: 20px; }
+  .foot { text-align: center; font-size: 11.5px; color: var(--muted); padding: 0 12px 10px; background: #fff; }
+
+  @media (max-width: 520px) {
+    #panel { right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 0; border: 0; }
+    #launcher span { display: none; } #launcher { padding: 14px; }
+    #nudge { right: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<!-- ===== Demo host page. In production, delete this block and keep only the widget (launcher/panel/script). ===== -->
+<div class="topbar">Official Website · Customer Service Portal</div>
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#ffc72c"/><path d="M8 29h28M12 29l6-14h8l6 14M22 15v14" stroke="#00386b" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>NCDOT<small>Customer Service Portal</small></div>
+    </div>
+    <nav aria-label="Main">
+      <a href="#">Permits</a><a href="#">Forms</a><a href="#">Manuals</a><a href="#">My Account</a><a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
+<section class="hero">
+  <div class="wrap">
+    <h1>Permits, forms and account help in one place</h1>
+    <p>Browse our guides below. If you get stuck, our virtual assistant is one click away in the corner of the page.</p>
+  </div>
+</section>
+<main>
+  <div class="cards">
+    <div class="card"><h3>Permits</h3><p>Requirements, fees and how to apply.</p></div>
+    <div class="card"><h3>Forms</h3><p>Find the right form for your project.</p></div>
+    <div class="card"><h3>Account &amp; Login</h3><p>Sign in, reset your password, manage access.</p></div>
+    <div class="card"><h3>Manuals</h3><p>User manuals and technical guides.</p></div>
+  </div>
+</main>
+<!-- ===== End demo host page ===== -->
+
+<!-- ===== Chat widget ===== -->
+<div id="nudge" role="status">
+  <button type="button" id="nudge-close" aria-label="Dismiss">×</button>
+  Need help with a permit, form or login? <a id="nudge-open">Ask me</a>
+</div>
+
+<button id="launcher" type="button" aria-label="Open NCDOT virtual assistant" aria-controls="panel" aria-expanded="false">
+  <span class="dot" aria-hidden="true"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+  <span>Need help?</span>
+</button>
+
+<section id="panel" role="dialog" aria-label="NCDOT virtual assistant" aria-modal="false">
+  <div class="chat-head">
+    <div class="avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18M6 18l3.5-9h5L18 18M12 9v9"/></svg></div>
+    <div>
+      <h2>NCDOT Assistant</h2>
+      <p>Online · Replies instantly</p>
+    </div>
+    <div class="head-actions">
+      <button class="icon-btn" id="reset" type="button" aria-label="Start a new chat" title="New chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
+      <button class="icon-btn" id="close" type="button" aria-label="Minimize chat" title="Minimize"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/></svg></button>
+    </div>
+  </div>
+
+  <div id="log" aria-live="polite"></div>
+
+  <form id="form" autocomplete="off">
+    <input id="input" placeholder="Type your question…" aria-label="Your question" maxlength="1000" required>
+    <button id="send" type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.4 20.4 21 12 3.4 3.6 3.3 10l12 2-12 2z"/></svg></button>
+  </form>
+  <div class="foot">Automated assistant. Answers come from NCDOT documents and may not be complete. Please don't share personal or payment information.</div>
+</section>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const panel = $('panel'), launcher = $('launcher'), log = $('log'),
+        form = $('form'), input = $('input'), send = $('send'), nudge = $('nudge');
+
+  let sessionId = localStorage.getItem('ncdot_session') || crypto.randomUUID();
+  localStorage.setItem('ncdot_session', sessionId);
+  let started = false;
+
+  /* ----- open / close ----- */
+  function openChat() {
+    panel.classList.add('open');
+    launcher.classList.add('hidden');
+    launcher.setAttribute('aria-expanded', 'true');
+    nudge.classList.remove('show');
+    if (!started) { welcome(); started = true; }
+    setTimeout(() => input.focus(), 50);
+  }
+  function closeChat() {
+    panel.classList.remove('open');
+    launcher.classList.remove('hidden');
+    launcher.setAttribute('aria-expanded', 'false');
+    launcher.focus();
+  }
+  launcher.onclick = openChat;
+  $('close').onclick = closeChat;
+  $('nudge-open').onclick = openChat;
+  $('nudge-close').onclick = () => { nudge.classList.remove('show'); sessionStorage.setItem('ncdot_nudge', '1'); };
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && panel.classList.contains('open')) closeChat(); });
+
+  // Gentle, one-time prompt – never auto-opens the chat.
+  if (!sessionStorage.getItem('ncdot_nudge')) {
+    setTimeout(() => { if (!panel.classList.contains('open')) nudge.classList.add('show'); }, 8000);
+  }
+
+  /* ----- safe lightweight formatting (escape first, then **bold**, links, lists) ----- */
+  const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function inline(s) {
+    return esc(s)
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/(https?:\/\/[^\s<)]+[^\s<).,;:!?])/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+  }
+  function format(text) {
+    const out = []; let list = null;
+    const flush = () => { if (list) { out.push(`<${list.t}>${list.items.join('')}</${list.t}>`); list = null; } };
+    for (const line of text.split('\n')) {
+      let m;
+      if ((m = line.match(/^\s*[-*•]\s+(.*)/))) { if (!list || list.t !== 'ul') { flush(); list = {t:'ul', items:[]}; } list.items.push(`<li>${inline(m[1])}</li>`); }
+      else if ((m = line.match(/^\s*\d+[.)]\s+(.*)/))) { if (!list || list.t !== 'ol') { flush(); list = {t:'ol', items:[]}; } list.items.push(`<li>${inline(m[1])}</li>`); }
+      else if (line.trim() === '') flush();
+      else { flush(); out.push(`<p>${inline(line)}</p>`); }
+    }
+    flush();
+    return out.join('');
+  }
+
+  /* ----- rendering ----- */
+  function scroll() { log.scrollTop = log.scrollHeight; }
+  function addRow(cls) { const r = document.createElement('div'); r.className = 'row ' + cls; log.appendChild(r); return r; }
+
+  function addUser(text) {
+    const r = addRow('user'), m = document.createElement('div');
+    m.className = 'msg'; m.textContent = text; r.appendChild(m); scroll();
+  }
+  function addBot(text, sources) {
+    const r = addRow('bot'), m = document.createElement('div');
+    m.className = 'msg'; m.innerHTML = format(text);
+    if (sources && sources.length) {
+      const d = document.createElement('details'); d.className = 'sources';
+      d.innerHTML = `<summary>Sources (${sources.length})</summary><ul>` +
+        sources.map(x => `<li>${esc(String(x.source))}${x.page ? ' – p.' + esc(String(x.page)) : ''}</li>`).join('') + '</ul>';
+      m.appendChild(d);
+    }
+    r.appendChild(m); scroll(); return r;
+  }
+  function addTyping() {
+    const r = addRow('bot'), m = document.createElement('div');
+    m.className = 'msg'; m.innerHTML = '<span class="typing" aria-label="Assistant is typing"><i></i><i></i><i></i></span>';
+    r.appendChild(m); scroll(); return r;
+  }
+
+  function welcome() {
+    log.innerHTML = '';
+    addBot("Hi, I'm the NCDOT virtual assistant. I can help you with permits, choosing the right form, login problems, and finding manuals.\n\nWhat can I help you with today?");
+    const chips = document.createElement('div'); chips.className = 'chips';
+    ["Which form do I need for a driveway permit?", "I can't log in to my account", "Where can I find the permit manual?", "What are the permit requirements?"]
+      .forEach(q => {
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = 'chip'; b.textContent = q;
+        b.onclick = () => ask(q);
+        chips.appendChild(b);
+      });
+    log.appendChild(chips); scroll();
+  }
+
+  /* ----- chat ----- */
+  async function ask(text) {
+    text = text.trim(); if (!text) return;
+    log.querySelectorAll('.chips').forEach(c => c.remove());
+    addUser(text);
+    input.value = ''; send.disabled = true;
+    const typing = addTyping();
+    try {
+      const r = await fetch('/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({message: text, session_id: sessionId})
+      });
+      if (!r.ok) throw new Error(await r.text());
+      const data = await r.json();
+      typing.remove();
+      addBot(data.answer, data.sources);
+    } catch (err) {
+      typing.remove();
+      addBot("Sorry, I couldn't get an answer just now. Please try again in a moment.");
+    } finally {
+      send.disabled = false; input.focus();
+    }
+  }
+  form.addEventListener('submit', e => { e.preventDefault(); ask(input.value); });
+
+  $('reset').onclick = async () => {
+    try { await fetch('/reset/' + sessionId, {method: 'POST'}); } catch (_) {}
+    sessionId = crypto.randomUUID();
+    localStorage.setItem('ncdot_session', sessionId);
+    welcome(); input.focus();
+  };
+})();
+</script>
+</body>
+</html>
