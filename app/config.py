@@ -17,6 +17,13 @@ TOP_K = int(os.getenv("TOP_K", "5"))
 SUPPORT_CONTACT = os.getenv(
     "SUPPORT_CONTACT", "the NCDOT customer service line listed on ncdot.gov"
 )
+ALLOWED_ORIGINS = [
+    origin.strip().rstrip("/")
+    for origin in os.getenv(
+        "ALLOWED_ORIGINS", "http://localhost:8000,http://127.0.0.1:8000"
+    ).split(",")
+    if origin.strip()
+]
 
 COLLECTION_NAME = "ncdot_docs"
 

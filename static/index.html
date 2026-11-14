@@ -197,11 +197,13 @@
   <div class="foot">Automated assistant. Answers come from NCDOT documents and may not be complete. Please don't share personal or payment information.</div>
 </section>
 
+<script src="config.js"></script>
 <script>
 (() => {
   const $ = id => document.getElementById(id);
   const panel = $('panel'), launcher = $('launcher'), log = $('log'),
         form = $('form'), input = $('input'), send = $('send'), nudge = $('nudge');
+  const API_BASE_URL = (window.NCDOT_API_BASE_URL || '').replace(/\/+$/, '');
 
   let sessionId = localStorage.getItem('ncdot_session') || crypto.randomUUID();
   localStorage.setItem('ncdot_session', sessionId);
@@ -301,7 +303,7 @@
     input.value = ''; send.disabled = true;
     const typing = addTyping();
     try {
-      const r = await fetch('/chat', {
+      const r = await fetch(`${API_BASE_URL}/chat`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({message: text, session_id: sessionId})
@@ -320,7 +322,7 @@
   form.addEventListener('submit', e => { e.preventDefault(); ask(input.value); });
 
   $('reset').onclick = async () => {
-    try { await fetch('/reset/' + sessionId, {method: 'POST'}); } catch (_) {}
+    try { await fetch(`${API_BASE_URL}/reset/${sessionId}`, {method: 'POST'}); } catch (_) {}
     sessionId = crypto.randomUUID();
     localStorage.setItem('ncdot_session', sessionId);
     welcome(); input.focus();

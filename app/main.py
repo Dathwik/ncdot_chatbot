@@ -5,6 +5,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.concurrency import run_in_threadpool
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -25,6 +26,12 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(title="NCDOT Virtual Assistant", lifespan=lifespan)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=config.ALLOWED_ORIGINS,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
+)
 
 
 class ChatRequest(BaseModel):
@@ -69,6 +76,11 @@ async def health():
 @app.get("/")
 async def index():
     return FileResponse(STATIC_DIR / "index.html")
+
+
+@app.get("/config.js")
+async def frontend_config():
+    return FileResponse(STATIC_DIR / "config.js", media_type="application/javascript")
 
 
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
