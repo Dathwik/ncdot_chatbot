@@ -180,7 +180,7 @@
     <div class="avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18M6 18l3.5-9h5L18 18M12 9v9"/></svg></div>
     <div>
       <h2>NCDOT Assistant</h2>
-      <p>Online · Replies instantly</p>
+      <p>Permits · Forms · Account help</p>
     </div>
     <div class="head-actions">
       <button class="icon-btn" id="reset" type="button" aria-label="Start a new chat" title="New chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
@@ -314,7 +314,9 @@
       addBot(data.answer, data.sources);
     } catch (err) {
       typing.remove();
-      addBot("Sorry, I couldn't get an answer just now. Please try again in a moment.");
+      addBot(!API_BASE_URL && location.hostname.endsWith('github.io')
+        ? "The live chat API isn't connected yet. Deploy the Render service and set the NCDOT_API_BASE_URL GitHub Actions variable."
+        : "Sorry, I couldn't get an answer just now. Please try again in a moment.");
     } finally {
       send.disabled = false; input.focus();
     }
